@@ -1,0 +1,19 @@
+.success {
+    background: #86f3a0;
+}
+
+.info {
+    background: rgba(23, 162, 184, 0.15);
+}
+
+.danger {
+    background: rgba(23, 162, 184, 0.05);
+}
+
+.loading {
+    background-color: #ffffff;
+    background-image: url("http://loadinggif.com/images/image-selection/3.gif");
+    background-size: 25px 25px;
+    background-position:right center;
+    background-repeat: no-repeat;
+}
