@@ -39,7 +39,7 @@ function showAnswers(apiResponse) {
         } else {
             doc_text.markRanges([range], {element: 'span', className: 'danger'})
         }
-        table_content.push([answer.answerText, answer.answerContext, answer.confidence])
+        table_content.push([answer.answerText, answer.answerContext, answer.confidence.toFixed(2) ])
     }
     //We show a table with the results
     $('#results-table').DataTable({
