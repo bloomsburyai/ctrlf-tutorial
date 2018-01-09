@@ -46,6 +46,7 @@ function showAnswers(apiResponse) {
         table_content.push([answer.answerText, answer.answerContext, answer.confidence.toFixed(2)])
     }
     //We show a table with the results
+    $.fn.dataTable.ext.errMode = 'throw';
     $('#results-table').DataTable({
         data: table_content,
         columns: [
