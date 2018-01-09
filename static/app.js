@@ -63,7 +63,13 @@ function showAnswers(apiResponse) {
 }
 
 function showLimit() {
-    $('#ctrlfWarning').show();//When the user submits too many requests or too much text we show a warning
+    var question= $('#ctrlfField').val();
+    if((question.length === 0 || !question.trim())){//blank string we clear display
+        $('#documentText').unmark();
+        $('#results-table').destroy();
+    }else {
+        $('#ctrlfWarning').show();//When the user submits too many requests or too much text we show a warning
+    }
 }
 
 function removeLoadingAnimation() {
