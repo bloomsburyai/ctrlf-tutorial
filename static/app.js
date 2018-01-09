@@ -18,7 +18,7 @@ function callAnswerApi(event) {
         'numberOfItems': NUM_RESULTS //integer describing how many answers we want
     };
     // We make a post request, call showAnswers() function on success, showLimit() on failure and remove a loading icon
-    $.post(ANSWER_API_URL,parameters,showAnswers).fail(showLimit).always(removeLoadingAnimation);
+    $.post(ANSWER_API_URL, parameters, showAnswers).fail(showLimit).always(removeLoadingAnimation);
     $('#ctrlfField').addClass('loading');//we show a loading animation
     $('#ctrlfWarning').hide();//hide warning in case it was shown before
 }
@@ -47,7 +47,7 @@ function showAnswers(apiResponse) {
     }
     //We show a table with the results
     $.fn.dataTable.ext.errMode = 'throw';
-    $('#results-table').DataTable({
+    $('#results-table').show().DataTable({
         data: table_content,
         columns: [
             {title: "Answer"},
@@ -63,11 +63,11 @@ function showAnswers(apiResponse) {
 }
 
 function showLimit() {
-    var question= $('#ctrlfField').val();
-    if((question.length === 0 || !question.trim())){//blank string we clear display
+    var question = $('#ctrlfField').val();
+    if ((question.length === 0 || !question.trim())) {//blank string we clear display
         $('#documentText').unmark();
-        $('#results-table').destroy();
-    }else {
+        $('#results').hide();
+    } else {
         $('#ctrlfWarning').show();//When the user submits too many requests or too much text we show a warning
     }
 }
