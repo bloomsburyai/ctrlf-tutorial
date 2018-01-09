@@ -57,7 +57,8 @@ function showAnswers(apiResponse) {
         ordering: false,
         paging: false,
         searching: false,
-        info: false
+        info: false,
+        destroy: true
     });
 }
 
