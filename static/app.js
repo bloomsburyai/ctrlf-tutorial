@@ -47,7 +47,8 @@ function showAnswers(apiResponse) {
     }
     //We show a table with the results
     $.fn.dataTable.ext.errMode = 'throw';
-    $('#results-table').show().DataTable({
+    $('#results').show();
+    $('#results-table').DataTable({
         data: table_content,
         columns: [
             {title: "Answer"},
