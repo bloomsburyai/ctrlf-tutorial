@@ -10,14 +10,14 @@ $(document).ready(function () {
 
 function callAnswerApi(event) {
     event.preventDefault();//we block html form submission
-    //We post to the API URL the question and the text extracted from the webpage.
+    // We post to the API URL the question and the text extracted from the webpage.
     // Extracting endpoint parameters
     var parameters = {
         'question': $('#ctrlfField').val(), //question value
         'text': $('#documentText').text(),  //text value
         'numberOfItems': NUM_RESULTS //integer describing how many answers we want
     };
-    //We then call the showAnswers() function on success.
+    // We make a post request, call showAnswers() function on success, showLimit() on failure and remove a loading icon
     $.post(ANSWER_API_URL,parameters,showAnswers).fail(showLimit).always(removeLoadingAnimation);
     $('#ctrlfField').addClass('loading');//we show a loading animation
     $('#ctrlfWarning').hide();//hide warning in case it was shown before
