@@ -15,7 +15,7 @@ function callAnswerApi(event) {
     var parameters = {
         'question': $('#ctrlfField').val(), //question value
         'text': $('#documentText').text(),  //text value
-        'numberOfItems': NUM_RESULTS //Int describing how many answers we want
+        'numberOfItems': NUM_RESULTS //integer describing how many answers we want
     };
     //We then call the showAnswers() function on success.
     $.post(ANSWER_API_URL,parameters,showAnswers).fail(showLimit).always(removeLoadingAnimation);
