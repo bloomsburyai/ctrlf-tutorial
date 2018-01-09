@@ -11,10 +11,14 @@ $(document).ready(function () {
 function callAnswerApi(event) {
     event.preventDefault();//we block html form submission
     //We post to the API URL the question and the text extracted from the webpage.
+    // Extracting endpoint parameters
+    var parameters = {
+        'question': $('#ctrlfField').val(), //question value
+        'text': $('#documentText').text(),  //text value
+        'numberOfItems': NUM_RESULTS //Int describing how many answers we want
+    };
     //We then call the showAnswers() function on success.
-    $.post(ANSWER_API_URL,
-        {'question': $('#ctrlfField').val(), 'text': $('#documentText').text(), 'numberOfItems': NUM_RESULTS},
-        showAnswers).fail(showLimit).always(removeLoadingAnimation);
+    $.post(ANSWER_API_URL,parameters,showAnswers).fail(showLimit).always(removeLoadingAnimation);
     $('#ctrlfField').addClass('loading');//we show a loading animation
     $('#ctrlfWarning').hide();//hide warning in case it was shown before
 }
@@ -39,7 +43,7 @@ function showAnswers(apiResponse) {
         } else {
             doc_text.markRanges([range], {element: 'span', className: 'danger'})
         }
-        table_content.push([answer.answerText, answer.answerContext, answer.confidence.toFixed(2) ])
+        table_content.push([answer.answerText, answer.answerContext, answer.confidence.toFixed(2)])
     }
     //We show a table with the results
     $('#results-table').DataTable({
